@@ -1,4 +1,5 @@
 # Timer
+![Screenshot](images/screenshot.png)
 Silly but confortable timer for your macOS terminal
 
 ## Usage
