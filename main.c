@@ -23,12 +23,6 @@ void draw_progress_bar(int terminal_width, int progress) {
 
 }
 
-int get_terminal_width() {
-  printf("%s\n", getenv("COLUMNS"));
-  // return atoi(getenv("COLUMNS"));
-  return 30;
-};
-
 void format_and_print_seconds(int seconds) {
   int hours = seconds / 60 / 60;
   int minutes = seconds / 60;
@@ -77,12 +71,6 @@ int main(int argc, char *argv[]) {
     units_number = units_number * 60 * 60;
   }
 
-  // if (!validate_time_argument(time_input)) {
-  //   printf("Malformed argument");
-  //   printf("Usage: ...\n");
-  //   return 1;
-  // };
-
   int time_in_seconds = units_number;
   int done = 0;
   while (!done) {
@@ -93,8 +81,6 @@ int main(int argc, char *argv[]) {
     struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
     int terminal_columns = w.ws_col;
-    // int terminal_width = print_columns();
-    // int terminal_width = get_terminal_width();
     int terminal_width = terminal_columns;
     int progress = (time_in_seconds * terminal_width) / units_number;
     draw_progress_bar(terminal_width, progress);
